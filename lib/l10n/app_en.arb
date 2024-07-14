@@ -1,0 +1,21 @@
+{
+    "@@locale": "en",
+    "hello": "Akkam Bultee",
+    "welcome": "Baga Gara Abbaa Taayitaa Hayyama fi To'annoo Konkolaachisaa fi Konkolaataa Bulchiinsa Magaalaa Finfinneetti Waajjira Damee  Addis Katamaa dhuftan",
+    "services":"Tajaajiloota",
+    "service_description":"Waa’ee tajaajila dhaabbaticha keessatti kennamuu fi kutaa tajaajilli itti kennamu, akkasumas tajaajilicha argachuuf maal isinirraa  akka eegamu  sin hubachiisa.",
+    "direction":"Eessa deemuu barbaaddan",
+    "direction_description":"Kutaa hojii ykn ogeeyyii fi hoggantoota dhaabbaticha biiroo jiran akka beektan sin dandeessisa",
+    "comment":"Komii/yaada",
+    "comment_description":"Tajaajila dhaabbaticha keessatti kennamu irratti komii yoo qabaattan, kana fayyadamuun komii keessan ibsaa",
+    "rate":"Safarati Tajaajila",
+    "rate_description":"Kenniinsa tajaajilaa fi keessummeessitoota dhaabbatichaa irratti itti quufinsa qabdan ibsaa",
+    "driver_services":"Tajaajila konkolaachisaa",
+    "vehicle_services":"Tajaajila konkolaataa",
+
+    "time_it_takes":"yeroon fudhatu",
+    "minute":"Daqiqaa",
+
+    "requirement_to_get_service":"Haala maamiltichi tajaajila argachuuf dursa guutachu qabu",
+    "office_name":"Bulchiinsa Magaalaa Finfinneetti Taayitaa Hayyama fi To'annoo Konkolaachisaa fi Konkolaataa Waajjira Damee  Addis Katamaa"
+}
