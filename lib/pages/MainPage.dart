@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:road_ministry/pages/feedback/Feedback.dart';
 import 'package:road_ministry/pages/officeFinder/OfficeFinder.dart';
 import 'package:road_ministry/pages/services/SelectMainService.dart';
 import 'package:road_ministry/shared/CustomAppBar.dart';
-import 'package:road_ministry/shared/LanguageSelectDropDown.dart';
+import 'package:road_ministry/pages/compliment/Compliment.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0), // Set the desired height here
-          child: customAppBar(context, true)),
+          child: customAppBar(context, false)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +51,7 @@ class MainPage extends StatelessWidget {
               children: [
                 buildButton(
                   context,
-                  SelectMainService(),
+                  ComplimentForm(),
                   AppLocalizations.of(context)!.comment,
                   AppLocalizations.of(context)!.comment_description,
                   buttonWidth,
@@ -60,7 +60,7 @@ class MainPage extends StatelessWidget {
                 SizedBox(width: horizontalGap), // Space between buttons
                 buildButton(
                     context,
-                    SelectMainService(),
+                    FeedBackForm(),
                     AppLocalizations.of(context)!.rate,
                     AppLocalizations.of(context)!.rate_description,
                     buttonWidth,
