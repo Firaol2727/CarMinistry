@@ -9,7 +9,7 @@ Widget customAppBar(BuildContext context, bool? first, {String title = ""}) {
   final size = MediaQuery.of(context).size;
   final title_width = size.width * 0.7;
   return Container(
-    color: Colors.green, // Customize the background color
+    color: Color.fromRGBO(11, 73, 118, 1), // Border color
     child: SafeArea(
       child: Center(
         child: Row(

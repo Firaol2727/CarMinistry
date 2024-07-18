@@ -3,7 +3,6 @@ import 'package:road_ministry/constants/Services.dart';
 import 'package:road_ministry/constants/VehicleServices.dart';
 
 List<Services> getDriverServices(String locale) {
-  print("Finding Driver Service " + locale);
   if (locale == "am") {
     return DriverAmharicService;
   } else {
@@ -20,7 +19,6 @@ List<Services> getVehicleServices(String locale) {
 }
 
 Services findServiceByTypeAndIndex(int index, String type, String locale) {
-  print("Index " + index.toString() + " type " + type);
   if (locale == "am") {
     if (type == "driver") {
       return DriverAmharicService[index];

@@ -62,7 +62,7 @@ class _ComplimentFormState extends State<ComplimentForm> {
               content: Container(
                   color: Colors.blue,
                   child: Text(
-                    'Form submitted successfully!',
+                    AppLocalizations.of(context)!.form_sumbitted,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -78,7 +78,7 @@ class _ComplimentFormState extends State<ComplimentForm> {
           SnackBar(
             backgroundColor: Colors.blue,
             content: Text(
-              'Form submitted successfully!',
+              AppLocalizations.of(context)!.form_sumbitted,
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -248,6 +248,7 @@ class _ComplimentFormState extends State<ComplimentForm> {
                             ? 'Please enter the expected response'
                             : null,
                       ),
+                      SizedBox(height: 16.0),
                       Row(
                         children: [
                           Checkbox(
@@ -265,18 +266,24 @@ class _ComplimentFormState extends State<ComplimentForm> {
                       Center(
                         child: Container(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _submitForm();
+                            },
                             child: Text(AppLocalizations.of(context)!.submit),
                             style: ElevatedButton.styleFrom(
                               minimumSize: Size(250, 45),
                               foregroundColor: Colors.white,
-                              backgroundColor: Colors.green,
+                              backgroundColor: Color.fromRGBO(11, 73, 118, 1),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(height: 16.0),
-                      Text(AppLocalizations.of(context)!.reminder),
+                      Text(
+                        AppLocalizations.of(context)!.reminder,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
                       SizedBox(height: 10.0),
                       Reminder(AppLocalizations.of(context)!.reminder1),
                       Reminder(AppLocalizations.of(context)!.reminder2),

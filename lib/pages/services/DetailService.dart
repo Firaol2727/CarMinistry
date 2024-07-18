@@ -18,8 +18,11 @@ class DetailService extends StatelessWidget {
     data = findServiceByTypeAndIndex(
         index, type_service, AppLocalizations.of(context)!.localeName);
     final size = MediaQuery.of(context).size;
-    final requirementWidth = size.width * 0.47; // 40% of the screen width
     final requirementHeight = size.height * 0.1;
+    final requirement_length = data.requirement.length;
+    final requirementWidth = requirement_length <= 12
+        ? size.width * 0.6
+        : size.width * 0.47; // 40% of the screen width
     final title = type_service == "driver"
         ? AppLocalizations.of(context)!.office_name +
             " " +

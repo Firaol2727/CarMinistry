@@ -72,9 +72,8 @@ List<Services> VehicleAfaanOromooService = [
     "Faayilli karaa waajjira poostaa ergamuu qaba. Faayilli karaa waajjira poostaa ergamuu qaba."
         "Kaffaltii Tajaajilaa",
   ]),
-  Services(
-      8, 'Faayila konkolaataa Addis Ababa irraa gara naannootti dabarsuu', 15, [
-    "Xalayaa hojii dhaabuu baankota, galii, manneen murtii fi dhaabbilee faayinaansii maayikiroo irraa qaamolee hojii dhaabuuf hayyamamaniif kennuu."
+  Services(8, 'Tajaajila ugguraa kennuu', 14, [
+    "Xalayaa hojii dhaabuu baankota, galii, mana murtii fi dhaabbilee faayinaansii maayikiroo irraa dhiyeessuun"
         "Kaffaltii Tajaajilaa",
   ]),
   Services(9, 'Tajaajila Ugguraa Hiikuu', 24, [
@@ -244,9 +243,9 @@ List<Services> VehicleAmharicService = [
     "ፋይሉ በፖስታ ቤት በኩል መላክ አለበትፋይሉ በፖስታ ቤት በኩል መላክ አለበት",
     "የአገልግሎት ክፍያ ",
   ]),
-  Services(8, 'ከአዲስ አበባ ወደ ክልል የተሽከርካሪ ፋይል ዝውውር ማድረግ', 15, [
-    "የማገድ ስልጣን የጠሰጣቸው አካላት ከባንክ፣ገቢዎች፣ፍ/ቤት እና ማይክሮ ፋይናንስ ተቋማት የእገዳ ደብዳቤ ማቅረብ፣",
-    "የአገልግሎት ክፍያ ",
+  Services(8, 'እግድ ማገድ አገልግሎት መስጠት', 14, [
+    "የማገድ ስልጣን የጠሰጣቸው አካላት ከባንክ፣ገቢዎች፣ፍ/ቤት እና ማይክሮ ፋይናንስ ተቋማት የእገዳ ደብዳቤ ማቅረብ",
+    "የአገልግሎት ክፍያ",
   ]),
   Services(9, 'እግድ ማንሳት አገልግሎት መስጠት', 24, [
     "ከገንዘብ ተቋማት ያገደውን አካል ቁጥርና ቀን፣ የታገደበትን ምክንያት እና የብር መጠን የሚገልፅ ደብዳቤ ማቅረብ",

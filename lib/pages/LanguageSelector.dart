@@ -28,7 +28,7 @@ class LanguageSelector extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.select_local,
               style: TextStyle(
-                  color: Colors.black,
+                  color: Color.fromRGBO(11, 73, 118, 1),
                   fontWeight: FontWeight.bold,
                   fontSize: 25),
             ),
@@ -46,7 +46,7 @@ class LanguageSelector extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(250, 45),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.green,
+                backgroundColor: Color.fromRGBO(11, 73, 118, 1),
               ),
             ),
             SizedBox(height: 20),
@@ -62,7 +62,7 @@ class LanguageSelector extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(250, 45),
                 foregroundColor: Colors.white,
-                backgroundColor: Colors.green,
+                backgroundColor: Color.fromRGBO(11, 73, 118, 1),
               ),
             ),
           ],

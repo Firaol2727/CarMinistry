@@ -40,8 +40,12 @@
     "reminder3":"Qindeessaan adeemsa hojii komii dhimmi ilaallatu dhimmicha qoratee unka dhimma kanaaf qophaa’e irratti murtii ni kenna, himanni erga dhiyaatee guyyoota hojii 3 walitti aansuun keessatti himatamaa barreeffamaan ni beeksisa.",
     "reminder4":"Himatamaan murtii kennametti kan hin quufne yoo ta’e, sana booda Qaama/Koree Dhaddacha Komii fi Ol’iyyannootti iyyachuu ni danda’a.",
     "reminder5":"Dhimmi komii kanaa adeemsa/hogganaa adeemsa xiqqaa/qindeessaa dhimmi ilaallatuun kan murtaa’u ta’a.",
-    "submit":"galchuu",
+    "submit":"Galchi",
     "compilment_title":"Unka komii dhiyeessuun Abbaa Dhimmootaa -001",
     "agree":"Unka kana akkan guute walii gala",
-    "select_local":"Afaan Filadhaa"
+    "select_local":"Afaan Filadhaa",
+    "office":"Lakk. Biiroo ",
+    "select_an_office":"Biiroo ittin tajaajila fudhatan fildadha",
+    "form_sumbitted":"Unkaan Milkaa'inaan Ergameera !"
+
 }

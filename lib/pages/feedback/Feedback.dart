@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:road_ministry/constants/Employees.dart';
+import 'package:road_ministry/pages/LanguageSelector.dart';
 import 'package:road_ministry/shared/CustomAppBar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:http/http.dart' as http;
 
 class FeedBackForm extends StatefulWidget {
   @override
@@ -39,7 +41,108 @@ class _FeedBackFormState extends State<FeedBackForm> {
   ];
 
   String? selectedOffice;
+  Future<void> _submitForm() async {
+    // Prepare data to be sent
+    if (selectedOffice != null) {
+      print("Selected Values  ================== ");
+      print(selectedValues);
+      print("Selected Office ");
+      print(selectedOffice);
+      int employee_id = findEmployeeIdByAmharicName(selectedOffice!);
+      print("id" + employee_id.toString());
+      Map<String, String> data = {
+        'CustomerService': selectedValues["CustomerService"].toString(),
+        'StandardService': selectedValues["StandardService"].toString(),
+        'FairService': selectedValues["FairService"].toString(),
+        'ResponseForCompliment':
+            selectedValues["ResponseForCompliment"].toString(),
+        'ServiceRate': selectedValues["ServiceRate"].toString(),
+        'employee_id': employee_id.toString()
+      };
+      // Send data to server
+      final response = await http.post(
+        Uri.parse('https://example.com/submit-compliment'),
+        body: data,
+      );
+
+      if (response.statusCode == 200) {
+        print("Responded");
+        // Handle successful submission
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Container(
+                  color: Colors.blue,
+                  child: Text(
+                    AppLocalizations.of(context)!.form_sumbitted,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ))),
+        );
+        await Future.delayed(Duration(seconds: 2));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => LanguageSelector()));
+      } else {
+        // Handle error
+        print("Responded");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.blue,
+            content: Text(
+              AppLocalizations.of(context)!.form_sumbitted,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+        );
+        await Future.delayed(Duration(seconds: 2));
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => LanguageSelector()));
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.blue,
+          content: Text(
+            'Please Select An Office !',
+            style: TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
+    }
+  }
+
   List<Employee> offices = Employees;
+  String getOfficeAndName(Employee employee) {
+    if (AppLocalizations.of(context)!.localeName == "am") {
+      return employee.amharic_name +
+          " - " +
+          AppLocalizations.of(context)!.office +
+          " " +
+          "1" +
+          employee.office;
+    } else {
+      return employee.oromic_name +
+          " - " +
+          AppLocalizations.of(context)!.office +
+          " " +
+          "1" +
+          employee.office;
+    }
+  }
+
+  int findEmployeeIdByAmharicName(String amharicName) {
+    for (var employee in offices) {
+      if (employee.amharic_name == amharicName) {
+        return employee.id;
+      }
+    }
+    return -1; // Return -1 if the employee is not found
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +168,10 @@ class _FeedBackFormState extends State<FeedBackForm> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Service Office: '),
+                  Text(AppLocalizations.of(context)!.select_an_office),
                   SizedBox(width: 16),
                   DropdownButton<String>(
-                    hint: Text('Select an office'),
+                    hint: Text(''),
                     focusColor: Colors.green[50],
                     padding: EdgeInsets.fromLTRB(4, 0, 2, 0),
                     value: selectedOffice,
@@ -80,12 +183,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
                     items: offices.map((Employee office) {
                       return DropdownMenuItem<String>(
                         value: office.amharic_name,
-                        child: Text(office.amharic_name +
-                            " - "
-                                "Office " +
-                            " " +
-                            "1" +
-                            office.office),
+                        child: Text(getOfficeAndName(office)),
                       );
                     }).toList(),
                   ),
@@ -154,13 +252,12 @@ class _FeedBackFormState extends State<FeedBackForm> {
                               child: Radio<int>(
                                 value: index,
                                 focusColor: Colors.blue[50],
+                                activeColor: Color.fromRGBO(11, 73, 118, 1),
                                 groupValue: selectedValues[standard.value],
                                 onChanged: (int? value) {
                                   setState(() {
                                     selectedValues[standard.value] = value;
                                   });
-
-                                  print(selectedValues);
                                 },
                               ),
                             ),
@@ -177,12 +274,14 @@ class _FeedBackFormState extends State<FeedBackForm> {
               Center(
                 child: Container(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _submitForm();
+                    },
                     child: Text(AppLocalizations.of(context)!.submit),
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(250, 45),
                       foregroundColor: Colors.white,
-                      backgroundColor: Colors.green,
+                      backgroundColor: Color.fromRGBO(11, 73, 118, 1),
                     ),
                   ),
                 ),

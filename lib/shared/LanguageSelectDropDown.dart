@@ -12,13 +12,16 @@ Widget buildLanguageSelectorDropdown(BuildContext context) {
     padding: const EdgeInsets.symmetric(horizontal: 16.0),
     child: DropdownButton<Locale>(
       value: _selectedLocale,
-      hint: Text(
-          localeProvider.locale.languageCode == 'en' ? 'Afaan Oromoo' : 'አማርኛ',
+      dropdownColor: Color.fromARGB(255, 7, 102, 180),
+      hint: Text(localeProvider.locale.languageCode == 'en' ? 'Qooqa' : 'ቋንቋ',
           style: TextStyle(color: Colors.white)),
       items: AppLocalizations.supportedLocales.map((Locale locale) {
         return DropdownMenuItem<Locale>(
           value: locale,
-          child: Text(locale.languageCode == 'en' ? 'Afaan Oromoo' : 'አማርኛ'),
+          child: Text(
+            locale.languageCode == 'en' ? 'Afaan Oromoo' : 'አማርኛ',
+            style: TextStyle(color: Colors.white),
+          ),
         );
       }).toList(),
       onChanged: (Locale? newLocale) {

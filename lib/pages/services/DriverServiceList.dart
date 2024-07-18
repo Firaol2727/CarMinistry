@@ -16,7 +16,7 @@ class DriverService extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final buttonWidth = size.width * 0.22; // 40% of the screen width
-    final buttonHeight = size.height * 0.18; // 10% of the screen height
+    final buttonHeight = size.height * 0.19; // 10% of the screen height
     final gap = size.height * 0.01;
     double fontSize = 17;
     List<Services> data =
@@ -153,40 +153,71 @@ class DriverService extends StatelessWidget {
                   )),
         );
       },
-      child: Container(
-        padding: EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          border: Border.all(
-            color: Colors.blue, // Border color
-            width: 2.0, // Border width
+      child: Material(
+        elevation: 4.0,
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          padding: EdgeInsets.all(8.0),
+          decoration: BoxDecoration(
+            // gradient: LinearGradient(
+            //       colors: [
+            //         Colors.blue,
+            //         Colors.green,
+            //       ],
+            //       begin: Alignment.topLeft,
+            //       end: Alignment.bottomRight,
+            //     ),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Color.fromRGBO(11, 73, 118, 1), // Border color
+              width: 0.8, // Border width
+            ),
           ),
-          borderRadius: BorderRadius.circular(15.0), // Border radius
-        ),
-        width: buttonWidth,
-        height: buttonHeight,
-        child: Center(
-          child: Column(
+          width: buttonWidth,
+          height: buttonHeight,
+          child: Center(
+              child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                (index + 1).toString() + ". " + name,
-                style: TextStyle(
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              Flexible(
+                flex: 8, // 80% of the space
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      (index + 1).toString() + ". " + name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.w800,
+                        color: Color.fromRGBO(11, 73, 118, 1),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(),
-              Text(
-                time_decription,
-                style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.white,
+              SizedBox(height: 4.0), // Add some space between the texts
+              Flexible(
+                flex: 2, // 20% of the space
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      time_decription,
+                      style: TextStyle(
+                          fontSize:
+                              AppLocalizations.of(context)!.time_it_takes ==
+                                      "am"
+                                  ? 15.0
+                                  : 14.0,
+                          color: Color.fromARGB(255, 106, 119, 10)),
+                    ),
+                  ],
                 ),
               ),
             ],
-          ),
+          )),
         ),
       ),
     );

@@ -34,7 +34,7 @@ class SelectMainService extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: Colors.blue, // Border color
+                      color: Color.fromRGBO(11, 73, 118, 1), // Border color
                       width: 2.0, // Border width
                     ),
                     borderRadius: BorderRadius.circular(15.0), // Border radius
@@ -58,7 +58,7 @@ class SelectMainService extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                            color: Color.fromRGBO(11, 73, 118, 1),
                           ),
                         ),
                       ],
@@ -81,7 +81,7 @@ class SelectMainService extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(
-                      color: Colors.blue, // Border color
+                      color: Color.fromRGBO(11, 73, 118, 1), // Border color
                       width: 2.0, // Border width
                     ),
                     borderRadius: BorderRadius.circular(15.0), // Border radius
@@ -105,7 +105,7 @@ class SelectMainService extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
+                            color: Color.fromRGBO(11, 73, 118, 1),
                           ),
                         ),
                       ],

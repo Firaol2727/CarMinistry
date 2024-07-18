@@ -14,8 +14,7 @@ class MainPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     final buttonWidth = size.width * 0.4; // 40% of the screen width
-    final buttonHeight = size.height * 0.3; // 10% of the screen height
-    final verticalGap = size.height * 0.1; // 10% of the screen height
+    final buttonHeight = size.height * 0.31; // 10% of the screen height
     final horizontalGap = size.height * 0.08; // 10% of the screen height
     return Scaffold(
       appBar: PreferredSize(
@@ -89,8 +88,12 @@ class MainPage extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: Colors.blueAccent,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(
+            color: Color.fromRGBO(11, 73, 118, 1), // Border color
+            width: 2.0, // Border width
+          ),
         ),
         child: Center(
           child: Column(
@@ -103,7 +106,7 @@ class MainPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Color.fromRGBO(11, 73, 118, 1),
                   ),
                 ),
               ),
@@ -112,9 +115,7 @@ class MainPage extends StatelessWidget {
                 child: Text(
                   description,
                   style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white70,
-                  ),
+                      fontSize: 20.0, color: Color.fromARGB(255, 106, 119, 10)),
                 ),
               ),
             ],
