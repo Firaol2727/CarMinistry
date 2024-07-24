@@ -122,7 +122,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                       TextFormField(
                         controller: _fullNameController,
                         decoration: InputDecoration(
-                            labelText: AppLocalizations.of(context)!.full_name),
+                            labelText:
+                                AppLocalizations.of(context)!.full_name + " *"),
                         validator: (value) => value!.isEmpty
                             ? 'Please enter your full name'
                             : null,
@@ -134,7 +135,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                               controller: _cityController,
                               decoration: InputDecoration(
                                   labelText:
-                                      AppLocalizations.of(context)!.city),
+                                      AppLocalizations.of(context)!.city +
+                                          " *"),
                               validator: (value) => value!.isEmpty
                                   ? 'Please enter your city'
                                   : null,
@@ -146,7 +148,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                               controller: _subCityController,
                               decoration: InputDecoration(
                                   labelText:
-                                      AppLocalizations.of(context)!.sub_city),
+                                      AppLocalizations.of(context)!.sub_city +
+                                          " *"),
                               validator: (value) => value!.isEmpty
                                   ? 'Please enter your subcity'
                                   : null,
@@ -158,7 +161,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                               controller: _woredaController,
                               decoration: InputDecoration(
                                   labelText:
-                                      AppLocalizations.of(context)!.woreda),
+                                      AppLocalizations.of(context)!.woreda +
+                                          " *"),
                               validator: (value) => value!.isEmpty
                                   ? 'Please enter your woreda'
                                   : null,
@@ -171,9 +175,6 @@ class _ComplimentFormState extends State<ComplimentForm> {
                               decoration: InputDecoration(
                                   labelText:
                                       AppLocalizations.of(context)!.home_no),
-                              validator: (value) => value!.isEmpty
-                                  ? 'Please enter your home number'
-                                  : null,
                             ),
                           ),
                         ],
@@ -182,7 +183,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                         controller: _phoneNumberController,
                         decoration: InputDecoration(
                             labelText:
-                                AppLocalizations.of(context)!.phone_number),
+                                AppLocalizations.of(context)!.phone_number +
+                                    " *"),
                         validator: (value) => value!.isEmpty
                             ? 'Please enter your phone number'
                             : null,
@@ -191,14 +193,16 @@ class _ComplimentFormState extends State<ComplimentForm> {
                         controller: _reasonController,
                         decoration: InputDecoration(
                             labelText: AppLocalizations.of(context)!
-                                .compliment_reason),
+                                    .compliment_reason +
+                                " *"),
                         validator: (value) =>
                             value!.isEmpty ? 'Please enter the reason' : null,
                       ),
                       TextFormField(
                         controller: _complimentDateController,
                         decoration: InputDecoration(
-                            labelText: AppLocalizations.of(context)!.date),
+                            labelText:
+                                AppLocalizations.of(context)!.date + " *"),
                         validator: (value) => value!.isEmpty
                             ? 'Please enter the compliment date'
                             : null,
@@ -210,7 +214,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                               controller: _placeSubCityController,
                               decoration: InputDecoration(
                                   labelText:
-                                      AppLocalizations.of(context)!.sub_city),
+                                      AppLocalizations.of(context)!.sub_city +
+                                          " *"),
                               validator: (value) => value!.isEmpty
                                   ? 'Please enter the subcity'
                                   : null,
@@ -222,7 +227,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                               controller: _placeWoredaController,
                               decoration: InputDecoration(
                                   labelText:
-                                      AppLocalizations.of(context)!.woreda),
+                                      AppLocalizations.of(context)!.woreda +
+                                          " *"),
                               validator: (value) => value!.isEmpty
                                   ? 'Please enter the woreda'
                                   : null,
@@ -234,7 +240,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                         controller: _employerNameController,
                         decoration: InputDecoration(
                             labelText:
-                                AppLocalizations.of(context)!.case_employee),
+                                AppLocalizations.of(context)!.case_employee +
+                                    " *"),
                         validator: (value) => value!.isEmpty
                             ? 'Please enter the employer name'
                             : null,
@@ -243,7 +250,8 @@ class _ComplimentFormState extends State<ComplimentForm> {
                         controller: _expectedResponseController,
                         decoration: InputDecoration(
                             labelText: AppLocalizations.of(context)!
-                                .complilmenter_need),
+                                    .complilmenter_need +
+                                " *"),
                         validator: (value) => value!.isEmpty
                             ? 'Please enter the expected response'
                             : null,

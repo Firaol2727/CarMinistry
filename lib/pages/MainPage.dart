@@ -12,7 +12,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    print("size " + size.width.toString());
     final buttonWidth = size.width * 0.4; // 40% of the screen width
     final buttonHeight = size.height * 0.31; // 10% of the screen height
     final horizontalGap = size.height * 0.08; // 10% of the screen height
@@ -104,7 +104,7 @@ class MainPage extends StatelessWidget {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontSize: 30.0,
+                    fontSize: 42.0,
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(11, 73, 118, 1),
                   ),
@@ -115,7 +115,8 @@ class MainPage extends StatelessWidget {
                 child: Text(
                   description,
                   style: TextStyle(
-                      fontSize: 20.0, color: Color.fromARGB(255, 106, 119, 10)),
+                      fontSize: (size.width > 1280) ? 25.0 : 20,
+                      color: Color.fromARGB(255, 106, 119, 10)),
                 ),
               ),
             ],

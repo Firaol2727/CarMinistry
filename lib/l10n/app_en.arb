@@ -20,6 +20,7 @@
     "office_name":"Bulchiinsa Magaalaa Finfinneetti Taayitaa Hayyama fi To'annoo Konkolaachisaa fi Konkolaataa Waajjira Damee  Addis Katamaa",
     "service_rate_title":"Tajaajila Waajjirri kennu irratti yaada Maamiltootaa Fudhachuuf CheckListii Qophaa'e",
     "full_name":"Maqaa guutuu koomii dhiyeessaa",
+    "name":"Maqaa",
     "address":"Teessoo",
     "city":"Magaalaa",
     "sub_city":"K/Magaalaa",
@@ -44,7 +45,7 @@
     "compilment_title":"Unka komii dhiyeessuun Abbaa Dhimmootaa -001",
     "agree":"Unka kana akkan guute walii gala",
     "select_local":"Afaan Filadhaa",
-    "office":"Lakk. Biiroo ",
+    "office":"Lakk. Foddaa ",
     "select_an_office":"Biiroo ittin tajaajila fudhatan fildadha",
     "form_sumbitted":"Unkaan Milkaa'inaan Ergameera !"
 

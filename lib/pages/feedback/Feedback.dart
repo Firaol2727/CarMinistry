@@ -43,11 +43,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
   String? selectedOffice;
   Future<void> _submitForm() async {
     // Prepare data to be sent
-    if (selectedOffice != null) {
-      print("Selected Values  ================== ");
-      print(selectedValues);
-      print("Selected Office ");
-      print(selectedOffice);
+    if (_formKey.currentState!.validate() && selectedOffice != null) {
       int employee_id = findEmployeeIdByAmharicName(selectedOffice!);
       print("id" + employee_id.toString());
       Map<String, String> data = {
@@ -57,35 +53,54 @@ class _FeedBackFormState extends State<FeedBackForm> {
         'ResponseForCompliment':
             selectedValues["ResponseForCompliment"].toString(),
         'ServiceRate': selectedValues["ServiceRate"].toString(),
-        'employee_id': employee_id.toString()
+        'employee_id': employee_id.toString(),
+        'name': _fullNameController.text,
+        'phone': _phoneController.text
       };
+      print(data);
       // Send data to server
-      final response = await http.post(
-        Uri.parse('https://example.com/submit-compliment'),
-        body: data,
-      );
 
-      if (response.statusCode == 200) {
-        print("Responded");
-        // Handle successful submission
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Container(
-                  color: Colors.blue,
-                  child: Text(
-                    AppLocalizations.of(context)!.form_sumbitted,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ))),
+      try {
+        final response = await http.post(
+          Uri.parse('https://example.com/submit-compliment'),
+          body: data,
         );
-        await Future.delayed(Duration(seconds: 2));
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => LanguageSelector()));
-      } else {
-        // Handle error
-        print("Responded");
+        if (response.statusCode == 200) {
+          // Handle successful submission
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                content: Container(
+                    color: Colors.blue,
+                    child: Text(
+                      AppLocalizations.of(context)!.form_sumbitted,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ))),
+          );
+          await Future.delayed(Duration(seconds: 2));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => LanguageSelector()));
+        } else {
+          // Handle error
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.blue,
+              content: Text(
+                AppLocalizations.of(context)!.form_sumbitted,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          );
+          await Future.delayed(Duration(seconds: 2));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => LanguageSelector()));
+        }
+      } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             backgroundColor: Colors.blue,
@@ -107,7 +122,7 @@ class _FeedBackFormState extends State<FeedBackForm> {
         SnackBar(
           backgroundColor: Colors.blue,
           content: Text(
-            'Please Select An Office !',
+            'Please Add All the Required Fields !',
             style: TextStyle(
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           ),
@@ -123,14 +138,12 @@ class _FeedBackFormState extends State<FeedBackForm> {
           " - " +
           AppLocalizations.of(context)!.office +
           " " +
-          "1" +
           employee.office;
     } else {
       return employee.oromic_name +
           " - " +
           AppLocalizations.of(context)!.office +
           " " +
-          "1" +
           employee.office;
     }
   }
@@ -144,8 +157,15 @@ class _FeedBackFormState extends State<FeedBackForm> {
     return -1; // Return -1 if the employee is not found
   }
 
+  final _formKey = GlobalKey<FormState>();
+  // Form fields controllers
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final formWidth = size.width * 0.7; // 40% of the screen width
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0), // Set the desired height here
@@ -153,140 +173,187 @@ class _FeedBackFormState extends State<FeedBackForm> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 30),
-              Text(
-                AppLocalizations.of(context)!.service_rate_title,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppLocalizations.of(context)!.select_an_office),
-                  SizedBox(width: 16),
-                  DropdownButton<String>(
-                    hint: Text(''),
-                    focusColor: Colors.green[50],
-                    padding: EdgeInsets.fromLTRB(4, 0, 2, 0),
-                    value: selectedOffice,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedOffice = newValue;
-                      });
-                    },
-                    items: offices.map((Employee office) {
-                      return DropdownMenuItem<String>(
-                        value: office.amharic_name,
-                        child: Text(getOfficeAndName(office)),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Table(
-                border: TableBorder.all(width: 0),
-                columnWidths: {
-                  0: FixedColumnWidth(
-                      300.0), // First column with a fixed width of 200.0
-                  1: FixedColumnWidth(
-                      120.0), // Second column with a fixed width of 100.0
-                  2: FixedColumnWidth(120.0),
-                  3: FixedColumnWidth(120.0),
-                  4: FixedColumnWidth(120.0),
-                },
-                children: [
-                  TableRow(
-                    children: [
-                      TableCell(
-                          child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            AppLocalizations.of(context)!.localeName == "am"
-                                ? Evaluation.amharic_name
-                                : Evaluation.oromic_name),
-                      )),
-                      ...ratings
-                          .map((Rating rating) => TableCell(
-                                  child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                    AppLocalizations.of(context)!.localeName ==
-                                            "am"
-                                        ? rating.amharic_name
-                                        : rating.oromic_name),
-                              )))
-                          .toList(),
-                    ],
-                  ),
-                  ...standards.map((standard) {
-                    return TableRow(
-                      children: [
-                        TableCell(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                                AppLocalizations.of(context)!.localeName == "am"
-                                    ? standard.amharic_name
-                                    : standard.oromic_name),
-                          ),
-                        ),
-                        ...ratings.asMap().entries.map((entry) {
-                          int index = entry.key;
-                          // String rating = entry.value.value;
-                          return TableCell(
-                            child: Center(
-                              child: Radio<int>(
-                                value: index,
-                                focusColor: Colors.blue[50],
-                                activeColor: Color.fromRGBO(11, 73, 118, 1),
-                                groupValue: selectedValues[standard.value],
-                                onChanged: (int? value) {
-                                  setState(() {
-                                    selectedValues[standard.value] = value;
-                                  });
-                                },
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ],
-                    );
-                  }).toList(),
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              Center(
-                child: Container(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _submitForm();
-                    },
-                    child: Text(AppLocalizations.of(context)!.submit),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(250, 45),
-                      foregroundColor: Colors.white,
-                      backgroundColor: Color.fromRGBO(11, 73, 118, 1),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: 30),
+                Text(
+                  AppLocalizations.of(context)!.service_rate_title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.select_an_office,
+                      style: TextStyle(fontSize: 17),
                     ),
+                    SizedBox(width: 16),
+                    DropdownButton<String>(
+                      hint: Text(''),
+                      focusColor: Colors.green[50],
+                      padding: EdgeInsets.fromLTRB(4, 0, 2, 0),
+                      value: selectedOffice,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedOffice = newValue;
+                        });
+                      },
+                      items: offices.map((Employee office) {
+                        return DropdownMenuItem<String>(
+                          value: office.amharic_name,
+                          child: Container(
+                            height: 110,
+                            padding: EdgeInsets.fromLTRB(2, 5, 5, 2),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  office.path != ""
+                                      ? 'assets/employee/' + office.path
+                                      : 'assets/icons/profile_holder.jpg',
+                                  width: 50,
+                                  height: 70,
+                                  fit: BoxFit.cover,
+                                ),
+                                SizedBox(width: 6),
+                                Text(getOfficeAndName(office)),
+                              ],
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: formWidth,
+                  child: TextFormField(
+                    controller: _fullNameController,
+                    decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.name),
+                    validator: (value) =>
+                        value!.isEmpty ? 'Please enter your full name' : null,
                   ),
                 ),
-              )
-            ],
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: formWidth,
+                  child: TextFormField(
+                    controller: _phoneController,
+                    decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.phone_number),
+                    validator: (value) => value!.isEmpty
+                        ? 'Please enter your phone number'
+                        : null,
+                  ),
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Container(
+                  width: formWidth,
+                  child: Table(
+                    border: TableBorder.all(width: 0),
+                    children: [
+                      TableRow(
+                        children: [
+                          TableCell(
+                              child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                AppLocalizations.of(context)!.localeName == "am"
+                                    ? Evaluation.amharic_name
+                                    : Evaluation.oromic_name),
+                          )),
+                          ...ratings
+                              .map((Rating rating) => TableCell(
+                                      child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.bold),
+                                        AppLocalizations.of(context)!
+                                                    .localeName ==
+                                                "am"
+                                            ? rating.amharic_name
+                                            : rating.oromic_name),
+                                  )))
+                              .toList(),
+                        ],
+                      ),
+                      ...standards.map((standard) {
+                        return TableRow(
+                          children: [
+                            TableCell(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                    AppLocalizations.of(context)!.localeName ==
+                                            "am"
+                                        ? standard.amharic_name
+                                        : standard.oromic_name),
+                              ),
+                            ),
+                            ...ratings.asMap().entries.map((entry) {
+                              int index = entry.key;
+                              // String rating = entry.value.value;
+                              return TableCell(
+                                child: Center(
+                                  child: Radio<int>(
+                                    value: index,
+                                    focusColor: Colors.blue[50],
+                                    activeColor: Color.fromRGBO(11, 73, 118, 1),
+                                    groupValue: selectedValues[standard.value],
+                                    onChanged: (int? value) {
+                                      setState(() {
+                                        selectedValues[standard.value] = value;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ],
+                        );
+                      }).toList(),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: Container(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _submitForm();
+                      },
+                      child: Text(AppLocalizations.of(context)!.submit),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(250, 45),
+                        foregroundColor: Colors.white,
+                        backgroundColor: Color.fromRGBO(11, 73, 118, 1),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

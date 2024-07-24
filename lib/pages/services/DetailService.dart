@@ -35,34 +35,46 @@ class DetailService extends StatelessWidget {
             preferredSize:
                 Size.fromHeight(100.0), // Set the desired height here
             child: customAppBar(context, false, title: title)),
-        body: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
-              children: [
-                Center(
-                  child: Text(
-                    AppLocalizations.of(context)!.requirement_to_get_service,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
+        body: SingleChildScrollView(
+          child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Column(
+                children: [
+                  Center(
+                    child: Text(
+                      data.name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 50),
-                Wrap(
-                  alignment: size / 2 == 0
-                      ? WrapAlignment.center
-                      : WrapAlignment.start,
-                  spacing: 10.0, // gap between adjacent items
-                  runSpacing: 4.0, // gap between lines
-                  children: data.requirement.map((String requirement) {
-                    return Requirement(
-                        requirement, requirementWidth, requirementHeight,
-                        requirementLength: data.requirement.length);
-                  }).toList(),
-                ),
-              ],
-            )));
+                  SizedBox(height: 15),
+                  Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.requirement_to_get_service,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 50),
+                  Wrap(
+                    alignment: size / 2 == 0
+                        ? WrapAlignment.center
+                        : WrapAlignment.start,
+                    spacing: 10.0, // gap between adjacent items
+                    runSpacing: 4.0, // gap between lines
+                    children: data.requirement.map((String requirement) {
+                      return Requirement(
+                          requirement, requirementWidth, requirementHeight,
+                          requirementLength: data.requirement.length);
+                    }).toList(),
+                  ),
+                ],
+              )),
+        ));
   }
 
   Container Requirement(
@@ -79,7 +91,7 @@ class DetailService extends StatelessWidget {
             child: Text(
               requirement,
               style: TextStyle(
-                fontSize: requirementLength > 14 ? 13 : 17,
+                fontSize: requirementLength > 14 ? 15 : 20,
               ),
               maxLines: null, // Allow unlimited lines
               overflow: TextOverflow

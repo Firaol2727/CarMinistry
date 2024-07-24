@@ -31,8 +31,9 @@ Widget customAppBar(BuildContext context, bool? first, {String title = ""}) {
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
                       child: CircleAvatar(
-                          minRadius: 40,
-                          backgroundImage: AssetImage('assets/icons/logo.jpg')),
+                          radius: 43,
+                          backgroundImage:
+                              AssetImage('assets/icons/logo2.jpeg')),
                     ),
                   ),
                   SizedBox(width: 20),
@@ -44,7 +45,7 @@ Widget customAppBar(BuildContext context, bool? first, {String title = ""}) {
                             : title,
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18.4,
+                            fontSize: 23.4,
                             fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                         maxLines: null, // Allow unlimited lines

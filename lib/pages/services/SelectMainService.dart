@@ -56,7 +56,7 @@ class SelectMainService extends StatelessWidget {
                         Text(
                           AppLocalizations.of(context)!.vehicle_services,
                           style: TextStyle(
-                            fontSize: 30.0,
+                            fontSize: size.width * 0.028,
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(11, 73, 118, 1),
                           ),
@@ -103,7 +103,7 @@ class SelectMainService extends StatelessWidget {
                         Text(
                           AppLocalizations.of(context)!.driver_services,
                           style: TextStyle(
-                            fontSize: 30.0,
+                            fontSize: size.width * 0.028,
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(11, 73, 118, 1),
                           ),

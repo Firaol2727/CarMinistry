@@ -30,7 +30,7 @@ class LanguageSelector extends StatelessWidget {
               style: TextStyle(
                   color: Color.fromRGBO(11, 73, 118, 1),
                   fontWeight: FontWeight.bold,
-                  fontSize: 25),
+                  fontSize: size.width * 0.02),
             ),
             SizedBox(height: 40),
             ElevatedButton(
@@ -42,9 +42,11 @@ class LanguageSelector extends StatelessWidget {
                       builder: (context) => MainPage(),
                     ));
               },
-              child: Text('አማርኛ'),
+              child: Text('አማርኛ',
+                style: TextStyle(fontSize: size.width * 0.02),
+              ),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(250, 45),
+                 minimumSize: Size(size.width * 0.3, size.height * 0.1),
                 foregroundColor: Colors.white,
                 backgroundColor: Color.fromRGBO(11, 73, 118, 1),
               ),
@@ -58,9 +60,12 @@ class LanguageSelector extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => MainPage()),
                 );
               },
-              child: Text('Afaan Oromoo'),
+              child: Text(
+                'Afaan Oromoo',
+                style: TextStyle(fontSize: size.width * 0.02),
+              ),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(250, 45),
+                minimumSize: Size(size.width * 0.3, size.height * 0.1),
                 foregroundColor: Colors.white,
                 backgroundColor: Color.fromRGBO(11, 73, 118, 1),
               ),
