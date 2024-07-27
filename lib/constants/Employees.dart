@@ -14,7 +14,7 @@ List<Employee> Employees = [
   Employee(1, "ያዜ የሻምበል ታፈረ", "Yaze Yeshamber Terefe", "Hogganaa Damee",
       "shambel_tefera.png", "የቅርንጫፍ ስራ አስኪያጅ", "20"),
   Employee(2, "ታንጉት አእምሮ ፈንታ", "Tangut Aymro Fanta",
-      "Barreessaa Hojii Raawwachiiftuu", "", "ኤክስኪዩቲቭ ሴክሬታሪ ", "20"),
+      "Barreessaa Hojii Raawwachiiftuu", "tangut.png", "ኤክስኪዩቲቭ ሴክሬታሪ ", "20"),
   Employee(
       3,
       "ጌትነት አድማሱ ጌታሁን",
@@ -94,5 +94,5 @@ List<Employee> Employees = [
       "endale_birhanu.png",
       "የተሸከርካሪ ብቃት ማረጋገጥ ቡድን",
       "35"),
-  Employee(16, "", "", "Galmee", "biro_36.png", "መዝገብ ቤት", "36"),
+  Employee(16, "ሚሊዮን አዲሱ በላይ", "Miliyon Addisu Balay ", "Galmee", "biro_36.png", "መዝገብ ቤት", "36"),
 ];

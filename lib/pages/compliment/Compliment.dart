@@ -51,7 +51,7 @@ class _ComplimentFormState extends State<ComplimentForm> {
 
       // Send data to server
       final response = await http.post(
-        Uri.parse('https://example.com/submit-compliment'),
+        Uri.parse('http://192.168.1.200:2000/compliment'),
         body: data,
       );
 
