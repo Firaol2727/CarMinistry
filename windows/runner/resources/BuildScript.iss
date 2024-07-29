@@ -35,7 +35,7 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\Firaol\Documents\Firaol\firneb\road_ministry
-OutputBaseFilename=AddisKetema-windows-x86_64
+OutputBaseFilename=AddisKetemaApp-windows-x86_64
 SetupIconFile=C:\Users\Firaol\Documents\Firaol\firneb\road_ministry\windows\runner\resources\AddisKetema.ico
 Compression=lzma
 SolidCompression=yes

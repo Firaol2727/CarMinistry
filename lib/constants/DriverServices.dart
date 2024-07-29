@@ -27,7 +27,7 @@ List<Services> DriverAfaanOromooService = [
     'Kaffaltii Tajaajilaa Godhaa'
   ]),
   Services(5, 'Galmee bakka hayyama konkolaachisummaa biyya alaa', 20, [
-    "Ragaa eenyummaa jiraataa Gulele ykn karra ba'uu ta'uu isaa dhiyeessuu",
+    "Ragaa eenyummaa jiraataa Addis Katamaa ykn karra ba'uu ta'uu isaa dhiyeessuu",
     'Xalayaa dhugummaa hayyama konkolaachisummaa mirkaneessu abbaa taayitaa geejjibaa biyyattii irraa dhiyeessuun',
     'Chaappaan Ministeera Dhimma Alaa biyyattii dhugummaa sanada kanaa mirkaneessu jiraachuu',
     'Ministeerri Dhimma Alaa Itiyoophiyaa nagahee dhugummaa sanada kanaa mirkaneessu akka dhiyeessu',
@@ -43,7 +43,7 @@ List<Services> DriverAfaanOromooService = [
     'Kaffaltii Tajaajilaa Godhaa'
   ]),
   Services(7, 'Galmee bakka hayyama konkolaachisummaa ittisaa', 20, [
-    "Gulele ykn karra ba'uu eenyummaa jiraataa kennuudhaaf",
+    "Addis Katamaa ykn karra ba'uu eenyummaa jiraataa kennuudhaaf",
     'Xalayaa hayyama konkolaachisummaa ibsu Awaash Arbaa waliin dhiyaachuu',
     "Speesimiin mallattoo, chaappaa fi bowwaa tokkoo fi tokko ta'uu",
     "Dhiyeessii Hayyama Konkolaachisummaa Ittisaa Orijinaala",
@@ -51,7 +51,7 @@ List<Services> DriverAfaanOromooService = [
   ]),
   Services(
       8, 'Fayila dabarsuu godinaa irraa gara Addis Ababaatti fudhachuu', 15, [
-    'Eenyummaa jiraataa Gulele',
+    'Eenyummaa jiraataa Addis Katamaa',
     'Faayila orijinaala guutuu waajjira poostaatiin ergaa',
     'Paaspoortii, Viizaa, Tikeetii Imala / Hayyama Jireenyaa',
     'Kaffaltii kaffaltii tajaajilaa'
@@ -120,7 +120,7 @@ List<Services> DriverAmharicService = [
     'የአገልግሎት ክፍያ መፈጸም'
   ]),
   Services(5, 'በውጪ መንጃ ፈቃድ ምትክ ምዝገባ ማካሄድ', 20, [
-    'የጉለሌ ወይም የመውጫ በር ነዋሪ ስለመሆኑ ማረጋገጫ መታወቂያ ማቅረብ',
+    'የአዲስ ከተማ ወይም የመውጫ በር ነዋሪ ስለመሆኑ ማረጋገጫ መታወቂያ ማቅረብ',
     'የአገሪቱ ትራንስፖርት ባለስልጣን የመንጃ ፈቃዱ ትክክለኛነት የተረጋገጠበት ደብዳቤ ማቅረብ',
     'የአገሪቱ የውጪ ጉዳይ ሚኒስቴር የሰነዱን ትክክለኛነት የተረጋገጠበት ማህተም መኖር',
     'የኢትዮጵያ ውጪ ጉዳይ ሚኒስቴር የሰነዱ ትክክለኛነት የተረጋገጠበት ደረሰኝ ማቅረብ'
@@ -136,14 +136,14 @@ List<Services> DriverAmharicService = [
     'የአገልግሎት ክፍያ መፈጸም'
   ]),
   Services(7, 'የመከላካያ መንጃ ፈቃድ ምትክ ምዝገባ ማካሄድ', 20, [
-    'ጉለሌ ወይም የመውጫ በር የነዋሪዎች መታወቂያ ማቅረብ',
+    'አዲስ ከተማ ወይም የመውጫ በር የነዋሪዎች መታወቂያ ማቅረብ',
     'ከአዋሽ አርባ የተሸኘበት መንጃ ፈቃዱን የሚገልፅ ደብዳቤ ማቅረብ',
     'የፊርማ፣ የማህተም እና የቀስት ናሙና አንድ አይት መሆን',
     'የመከላከያ መንጃ ፈቃድ ኦርጅናል ማቅረብ',
     'የአገልግሎት ክፍያ መፈጸም'
   ]),
   Services(8, 'ፋይል ዝውውር ከክፍለ ሀገር ወደ አዲስ አበባ መቀበል', 15, [
-    'ለጉለሌ  የነዋሪነት መታወቂያ',
+    'ለአዲስ ከተማ  የነዋሪነት መታወቂያ',
     'የተሟላ ኦርጅናል ፋይሉ በፖስታ ቤት ማስላክ',
     'ፓስፖርት፣ ቪዛ፣ የጉዞ ትኬት /መኖሪያ ፈቃድ/ መቅረብ',
     'የአገልግሎት ክፍያ መክፈል'

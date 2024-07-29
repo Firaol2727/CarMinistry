@@ -22,14 +22,16 @@ class Officefinder extends StatelessWidget {
 
                 children: Employees.map((Employee employee) {
                   return Officers(
-                      employee.path,
-                      AppLocalizations.of(context)!.localeName == "am"
-                          ? employee.amharic_name
-                          : employee.oromic_name,
-                      AppLocalizations.of(context)!.localeName == "am"
-                          ? employee.position
-                          : employee.oromic_position,
-                      OfficeNumber: employee.office);
+                    employee.path,
+                    AppLocalizations.of(context)!.localeName == "am"
+                        ? employee.amharic_name
+                        : employee.oromic_name,
+                    AppLocalizations.of(context)!.localeName == "am"
+                        ? employee.position
+                        : employee.oromic_position,
+                    context,
+                    OfficeNumber: employee.office,
+                  );
                 }).toList(),
               ),
             ),
@@ -37,7 +39,8 @@ class Officefinder extends StatelessWidget {
         ));
   }
 
-  Widget Officers(String image_path, String name, String position,
+  Widget Officers(
+      String image_path, String name, String position, BuildContext context,
       {String OfficeNumber = ""}) {
     return Container(
       width: 190,
@@ -101,7 +104,7 @@ class Officefinder extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "Office No " + OfficeNumber,
+                AppLocalizations.of(context)!.office + OfficeNumber,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 10,
